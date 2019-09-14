@@ -5,8 +5,8 @@
     <div class="flex-grow-1"></div>
 
     <v-toolbar-items>
-      <v-btn text>PROFESSORES</v-btn>
-      <v-btn text>DISCIPLINAS</v-btn>
+      <v-btn text to="/professores">PROFESSORES</v-btn>
+      <v-btn text to="/disciplinas">DISCIPLINAS</v-btn>
     </v-toolbar-items>
   </v-app-bar>
 </template>
