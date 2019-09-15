@@ -48,12 +48,17 @@ export default {
     },
     save() {
       if (this.editedIndex > -1) {
-        Object.assign(this.desserts[this.editedIndex], this.editedItem);
-      } else {
-        this.axios.post(`${this.url}/disciplinas`, this.editedItem)
-        .then((result) => {
+        this.axios
+          .patch(`${this.url}/disciplinas/${this.editedItem.id}`, this.editedItem)
+          .then(result => {
             console.log(result);
-        })
+          });
+      } else {
+        this.axios
+          .post(`${this.url}/disciplinas`, this.editedItem)
+          .then(result => {
+            console.log(result);
+          });
       }
       this.$emit("close");
     }
@@ -69,6 +74,9 @@ export default {
     showDialog: function() {
       console.log("alterou estado");
       this.dialog = this.showDialog;
+    },
+    editedItem: function() {
+      this.item = Object.assign({}, this.editedItem);
     }
   }
 };
