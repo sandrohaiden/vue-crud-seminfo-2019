@@ -44,12 +44,13 @@ export default {
   methods: {
     close() {
       this.dialog = false;
+      this.editedItem.nome = '';
       this.$emit("close");
     },
     save() {
       if (this.editedIndex > -1) {
         this.axios
-          .patch(`${this.url}/disciplinas/${this.editedItem.id}`, this.editedItem)
+          .patch(`${this.url}/disciplinas/${this.editedItem.id}`, this.item)
           .then(result => {
             console.log(result);
           });
