@@ -11,7 +11,7 @@
       </template>
       <template v-slot:item.acao="{ item }">
         <v-icon small class="mr-2" @click="editItem(item)">mdi-pencil</v-icon>
-        <v-icon small>mdi-delete</v-icon>
+        <v-icon small @click="deleteItem(item)">mdi-delete</v-icon>
       </template>
       <template v-slot:no-data>
         <v-btn color="primary" @click="initialize">Reset</v-btn>
@@ -75,9 +75,11 @@ export default {
       this.dialog = true;
     },
     deleteItem(item) {
-      const index = this.desserts.indexOf(item);
-      confirm("Are you sure you want to delete this item?") &&
-        this.desserts.splice(index, 1);
+      confirm(`Quer realmente excluir a disciplina '${item.nome}' ?`) &&
+        this.axios.delete(`${this.url}/disciplinas/${item.id}`)
+        .then(() => {
+          this.initialize();
+        })
     },
     close(){
       this.dialog = false;
