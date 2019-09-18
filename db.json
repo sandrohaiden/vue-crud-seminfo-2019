@@ -1,21 +1,21 @@
 {
     "disciplinas": [
         {
-            "codigo": 1,
+            "id": 1,
             "nome": "Algorítimos"
         },
         {
-            "codigo": 2,
+            "id": 2,
             "nome": "Banco de Dados"
         }
     ],
     "professores": [
         {
-            "codigo": 1,
+            "id": 1,
             "nome": "Professor A"
         },
         {
-            "codigo": 2,
+            "id": 2,
             "nome": "Professor B"
         }
     ]
