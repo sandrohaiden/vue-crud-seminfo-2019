@@ -44,7 +44,8 @@ export default {
   methods: {
     close() {
       this.dialog = false;
-      this.editedItem.nome = '';
+      this.item.nome = '';
+      this.index = -1;
       this.$emit("close");
     },
     save() {
@@ -52,16 +53,19 @@ export default {
         this.axios
           .patch(`${this.url}/disciplinas/${this.editedItem.id}`, this.item)
           .then(result => {
+            this.$emit("close");
+            this.close();
             console.log(result);
           });
       } else {
         this.axios
-          .post(`${this.url}/disciplinas`, this.editedItem)
+          .post(`${this.url}/disciplinas`, this.item)
           .then(result => {
+            this.$emit("close");
+            this.close();
             console.log(result);
           });
       }
-      this.$emit("close");
     }
   },
   computed: {
